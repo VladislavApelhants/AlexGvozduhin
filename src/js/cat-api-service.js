@@ -12,11 +12,8 @@ export class CatApiService {
 
   //* Added Private Class Elements
   BASE_URL = 'https://api.thecatapi.com/v1/';
-  END_POINTS = {
-    BREEDS: 'breeds',
-    IMAGES_SEARCH: 'images/search',
-  };
-
+  END_POINTS_BREEDS = 'breeds';
+  END_POINTS_IMAGES_SEARCH = 'images/search';
   //* Private function to handle server response (The Cat API)
   handleResponse(response) {
     if (response.status !== 200) {
@@ -28,13 +25,13 @@ export class CatApiService {
 
   // Function which return all the cats (promise)
   fetchBreeds() {
-    const url = `${this.BASE_URL}${this.END_POINTS.BREEDS}`;
+    const url = `${this.BASE_URL}${this.END_POINTS_BREEDS}`;
     return axios.get(url).then(this.handleResponse);
   }
 
   // Function which return the cat (promise) by ID
   fetchCatByBreed(breedId) {
-    const url = `${this.BASE_URL}${this.END_POINTS.IMAGES_SEARCH}?breed_ids=${breedId}`;
+    const url = `${this.BASE_URL}${this.END_POINTS_IMAGES_SEARCH}?breed_ids=${breedId}`;
     return axios.get(url).then(this.handleResponse);
   }
 }
