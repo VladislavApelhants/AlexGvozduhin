@@ -4,34 +4,33 @@ import axios from 'axios';
 axios.defaults.headers.common['x-api-key'] =
   'live_WU3qNW7HCGgc9ygOkysxRpFXZrESXftSjzKXfEP6AiHj02s1uf3NyjBqcYglzxCa';
 
-// ------------- Created clss CatApiService -------------
-export class CatApiService {
-  constructor() {
-    this.page = 1;
-  }
+//* Added Private Class Elements
+const BASE_URL = 'https://api.thecatapi.com/v1/';
+const END_POINTS_BREEDS = 'breeds';
+const END_POINTS_IMAGES_SEARCH = 'images/search';
 
-  //* Added Private Class Elements
-  BASE_URL = 'https://api.thecatapi.com/v1/';
-  END_POINTS_BREEDS = 'breeds';
-  END_POINTS_IMAGES_SEARCH = 'images/search';
-  //* Private function to handle server response (The Cat API)
-  handleResponse(response) {
-    if (response.status !== 200) {
-      throw new Error(response.status);
-    }
+// --------- Function which return all the cats (promise) ---------
+export function fetchBreeds() {
+  const url = `${BASE_URL}${END_POINTS_BREEDS}`;
+  return axios
+    .get(url)
+    .then(resp => {
+      return resp.data;
+    })
+    .catch(error => {
+      throw new Error('Error details:', error.message);
+    });
+}
 
-    return response.data;
-  }
-
-  // Function which return all the cats (promise)
-  fetchBreeds() {
-    const url = `${this.BASE_URL}${this.END_POINTS_BREEDS}`;
-    return axios.get(url).then(this.handleResponse);
-  }
-
-  // Function which return the cat (promise) by ID
-  fetchCatByBreed(breedId) {
-    const url = `${this.BASE_URL}${this.END_POINTS_IMAGES_SEARCH}?breed_ids=${breedId}`;
-    return axios.get(url).then(this.handleResponse);
-  }
+// --------- Function which return the cat (promise) by ID ---------
+export function fetchCatByBreed(breedId) {
+  const url = `${BASE_URL}${END_POINTS_IMAGES_SEARCH}?breed_ids=${breedId}`;
+  return axios
+    .get(url)
+    .then(resp => {
+      return resp.data;
+    })
+    .catch(error => {
+      throw new Error('Details of cat search Error:', error.message);
+    });
 }
