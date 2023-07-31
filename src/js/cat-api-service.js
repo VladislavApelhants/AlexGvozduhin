@@ -12,8 +12,7 @@ export async function fetchBreeds() {
     console.log(resp.data);
     return resp.data;
   } catch (error) {
-    // console.error('Error details:' + error.message);
-    throw new Error('Error details:' + error.message);
+    console.log(error);
   }
 }
 
@@ -24,7 +23,6 @@ export async function fetchCatByBreed(breedId) {
     console.log(resp.data);
     return resp.data;
   } catch (error) {
-    // console.error('Details of cat search Error:' + error.message);
-    throw new Error('Details of cat search Error:' + error.message);
+    console.log(error);
   }
 }
