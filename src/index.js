@@ -1,18 +1,18 @@
 // import SlimSelect from 'slim-select';
-import Notiflix from 'notiflix';
+
 import { fetchBreeds, fetchCatByBreed } from './js/cat-api-service';
-import Loader from './js/components/loader';
+
 
 const refs = {
   select: document.querySelector('.breed-select'),
-  loader: document.querySelector('.loader'),
+  // loader: document.querySelector('.loader'),
   error: document.querySelector('.error'),
   catInfo: document.querySelector('.cat-info'),
 };
 
-const loader = new Loader({
-  hidden: true,
-});
+// const loader = new Loader({
+//   hidden: true,
+// });
 
 // Fetch cat breeds and initialize SlimSelect for breed selection
 fetchBreeds()
@@ -24,7 +24,7 @@ fetchBreeds()
   })
   .catch(data => {
     // loader.showErrorLoader();
-    Notiflix.Notify.failure(data.message);
+
   });
 
 // Function which created makup options from <select>
@@ -42,11 +42,11 @@ refs.select.addEventListener('change', handleCatByBreed);
 function handleCatByBreed(event) {
   const selectedBreed = event.target.value;
   refs.catInfo.innerHTML = ' ';
-  loader.show();
+  // loader.show();
 
   fetchCatByBreed(selectedBreed)
     .then(data => {
-      loader.hide();
+      // loader.hide();
       // Destructuring the data object
       const { breeds, url } = data[0];
       const { name, description, temperament } = breeds[0];
@@ -61,9 +61,7 @@ function handleCatByBreed(event) {
     })
     .catch(data => {
       // loader.showErrorLoader();
-      Notiflix.Notify.failure(
-        'Oops! Something went wrong! Try reloading the page!'
-      );
+    
     });
 }
 
