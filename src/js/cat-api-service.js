@@ -9,6 +9,7 @@ axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
 export async function fetchBreeds() {
   try {
     const resp = await axios.get(`/breeds`);
+    console.log(resp.data);
     return resp.data;
   } catch (error) {
     // console.error('Error details:' + error.message);
@@ -20,6 +21,7 @@ export async function fetchBreeds() {
 export async function fetchCatByBreed(breedId) {
   try {
     const resp = await axios.get(`/images/search?breed_ids=${breedId}`);
+    console.log(resp.data);
     return resp.data;
   } catch (error) {
     // console.error('Details of cat search Error:' + error.message);
