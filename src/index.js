@@ -27,7 +27,6 @@ fetchBreeds()
     Notiflix.Notify.failure(data.message);
   });
 
-refs.select.value = 111;
 // Function which created makup options from <select>
 function createOptionMarkup(data) {
   const optionsMarkup = data
