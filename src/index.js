@@ -1,4 +1,4 @@
-import SlimSelect from 'slim-select';
+// import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from './js/cat-api-service';
 import Loader from './js/components/loader';
@@ -18,12 +18,12 @@ const loader = new Loader({
 fetchBreeds()
   .then(data => {
     createOptionMarkup(data);
-    new SlimSelect({
-      select: refs.select,
-    });
+    // new SlimSelect({
+    //   select: refs.select,
+    // });
   })
   .catch(data => {
-    loader.showErrorLoader();
+    // loader.showErrorLoader();
     Notiflix.Notify.failure(data.message);
   });
 
@@ -60,7 +60,7 @@ function handleCatByBreed(event) {
       );
     })
     .catch(data => {
-      loader.showErrorLoader();
+      // loader.showErrorLoader();
       Notiflix.Notify.failure(
         'Oops! Something went wrong! Try reloading the page!'
       );
