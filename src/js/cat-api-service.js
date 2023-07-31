@@ -11,7 +11,7 @@ export async function fetchBreeds() {
     const resp = await axios.get(`/breeds`);
     return resp.data;
   } catch (error) {
-    console.error('Error details:' + error.message);
+    // console.error('Error details:' + error.message);
     // throw new Error('Error details:' + error.message);
   }
 }
@@ -22,7 +22,7 @@ export async function fetchCatByBreed(breedId) {
     const resp = await axios.get(`/images/search?breed_ids=${breedId}`);
     return resp.data;
   } catch (error) {
-    console.error('Details of cat search Error:' + error.message);
+    // console.error('Details of cat search Error:' + error.message);
     // throw new Error('Details of cat search Error:' + error.message);
   }
 }
